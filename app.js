@@ -1,7 +1,6 @@
 const express = require('express');
 const siddu = express();
 
-// Middleware to parse JSON body
 siddu.use(express.json());
 
 // Dummy in-memory data
@@ -40,16 +39,16 @@ siddu.put('/users/:id', (req, res) => {
         users[index] = { id, ...req.body };
         res.json(users[index]);
     } else {
-        res.status(404).json({message: 'User not found' });
+        res.status(404).json({ message: 'User not found' });
     }
 });
 
 // ➤ DELETE: Delete a user
 siddu.delete('/delete-user/', (req, res) => {
-    const userId=req.query.userId
-    console.log(typeof(userId));
+    const userId = req.query.userId
+    console.log(typeof (userId));
     const id = parseInt(userId);
-    console.log(typeof(id));
+    console.log(typeof (id));
     const initialLength = users.length;
     users = users.filter(user => user.id !== id);
 
